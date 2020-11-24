@@ -7,3 +7,6 @@ Technologies used:
 ReactJS(react router)
 Styled Components
 Firebase
+
+To run it:
+clone + npm/yarn install + npm/yarn start
