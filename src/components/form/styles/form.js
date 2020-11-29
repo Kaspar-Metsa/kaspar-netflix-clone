@@ -1,16 +1,16 @@
-import styled from 'styled-components/macro'
-import {Link as ReactRouterLink} from 'react-router-dom';
+import styled from 'styled-components/macro';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
-/*div,h1,p,form are semantic elements*/
+/* div,h1,p,form are semantic elements */
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 660px;
-    /*rgba is nice because it allows to set 75% opacity, 0,0,0 is black*/
+  /*rgba is nice because it allows to set 75% opacity, 0,0,0 is black*/
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 5px;
-    /*This is set globally usually*/
+  /*This is set globally usually*/
   box-sizing: border-box;
   width: 100%;
   margin: auto;
@@ -27,7 +27,6 @@ export const Error = styled.div`
   color: white;
   padding: 15px 20px;
 `;
-
 
 export const Base = styled.form`
   display: flex;
@@ -55,14 +54,14 @@ export const TextSmall = styled.p`
   line-height: normal;
   color: #8c8c8c;
 `;
-/*Instead of passing in semantic element here, we can just say, take in ReactRouterLink*/
+/* Instead of passing in semantic element here, we can just say, take in ReactRouterLink */
 export const Link = styled(ReactRouterLink)`
-    color: white;
-    text-decoration: none;
-    
-    &:hover {
-        text-decoration: underline;
-    }
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 export const Input = styled.input`
   background: #333;

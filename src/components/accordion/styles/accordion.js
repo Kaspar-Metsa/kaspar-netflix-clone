@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Frame = styled.div`
-   /*margin-bottom: 40px;*/
+  /*margin-bottom: 40px;*/
 `;
 
 export const Inner = styled.div`

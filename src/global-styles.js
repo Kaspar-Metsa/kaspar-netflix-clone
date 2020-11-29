@@ -10,4 +10,3 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px;
 }
 `;
-

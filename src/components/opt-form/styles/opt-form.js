@@ -1,29 +1,29 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-    display: flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    margin-top: 20px;
-    
-    @media (max-width: 1000px) {
-        flex-direction: column;
-        align-items: center
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Input = styled.input`
-    max-width: 450px;
-    width: 100%;
-    height:70px;
-    padding:10px;
-    border: 0;
-    box-sizing: border-box;
+  max-width: 450px;
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  border: 0;
+  box-sizing: border-box;
 `;
 
 export const Break = styled.div`
-    flex-basis: 100%;
-`
+  flex-basis: 100%;
+`;
 
 export const Button = styled.button`
   display: flex;
@@ -41,9 +41,9 @@ export const Button = styled.button`
     margin-left: 10px;
     filter: brightness(0) invert(1);
     width: 24px;
-    
+
     @media (max-width: 1000px) {
-        width: 16px;
+      width: 16px;
     }
   }
 

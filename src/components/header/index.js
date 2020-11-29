@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { Link as ReachRouterLink } from 'react-router-dom';
 import {
-  Container,
-  Group,
   Background,
+  ButtonLink,
+  Container,
   Dropdown,
-  Picture,
-  Link,
-  Search,
-  Profile,
+  Feature,
   FeatureCallOut,
+  Group,
+  Link,
+  Logo,
+  Picture,
+  PlayButton,
+  Profile,
+  Search,
   SearchIcon,
   SearchInput,
-  ButtonLink,
-  PlayButton,
   Text,
-  Feature,
-  Logo,
 } from './styles/header';
-
 
 export default function Header({ bg = true, children, ...restProps }) {
   return bg ? (
@@ -51,7 +50,7 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
 
   return (
     <Search {...restProps}>
-      <SearchIcon onClick={() => setSearchActive((searchActive) => !searchActive)} data-testid="search-click">
+      <SearchIcon onClick={() => setSearchActive((searchActiveVar) => !searchActiveVar)} data-testid="search-click">
         <img src="/images/icons/search.png" alt="Search" />
       </SearchIcon>
       <SearchInput
@@ -69,7 +68,7 @@ Header.Profile = function HeaderProfile({ children, ...restProps }) {
   return <Profile {...restProps}>{children}</Profile>;
 };
 
-Header.Feature = function HeaderFeature({ children, ...restProps }) {
+Header.Feature = function HeaderFeature({ children }) {
   return <Feature>{children}</Feature>;
 };
 
@@ -99,9 +98,4 @@ Header.Text = function HeaderText({ children, ...restProps }) {
 
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
-};
-
-Header.NewText = function HeaderNewText({ children, ...restProps }) {
-  
-  return <NewText {...restProps}>{children}</NewText>;
 };

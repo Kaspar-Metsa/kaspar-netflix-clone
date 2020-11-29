@@ -9,30 +9,29 @@
  *     because I am going to use that unique id to allow us to have a key on each item. That's very react specific.
  */
 
-import {useEffect, useState, useContext} from 'react';
-import {FirebaseContext} from "../context/firebase";
+import { useContext, useEffect, useState } from 'react';
+import { FirebaseContext } from '../context/firebase';
 
 export default function useContent(target) {
+  const [content, setContent] = useState([]);
+  const { firebase } = useContext(FirebaseContext);
 
-    const [content, setContent] = useState([]);
-    const {firebase} = useContext(FirebaseContext);
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection(target)
+      .get()
+      .then((snapshot) => {
+        const allContent = snapshot.docs.map((contentObj) => ({
+          ...contentObj.data(),
+          docId: contentObj.id,
+        }));
+        setContent(allContent);
+      })
+      .catch((error) => {
+        console.log('error.message', error.message);
+      });
+  }, [firebase, target]);
 
-    useEffect(() => {
-        firebase
-            .firestore()
-            .collection(target)
-            .get()
-            .then((snapshot) => {
-                const allContent = snapshot.docs.map((contentObj) => ({
-                    ...contentObj.data(),
-                    docId: contentObj.id
-                }));
-                setContent(allContent)
-            })
-            .catch((error) => {
-                console.log('error.message', error.message);
-            });
-    }, [firebase, target]);
-
-    return {[target]: content};
+  return { [target]: content };
 }

@@ -1,97 +1,99 @@
-import React, { useState, useContext, createContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 import {
   Container,
+  Content,
+  Entities,
+  Feature,
+  FeatureClose,
+  FeatureText,
+  FeatureTitle,
   Group,
-  Title,
+  Hello,
+  Image,
+  Item,
+  Maturity,
+  Meta,
   SubTitle,
   Text,
-  Feature,
-  FeatureTitle,
-  FeatureText,
-  FeatureClose,
-  Maturity,
-  Content,
-  Meta,
-  Entities,
-  Item,
-  Image,
-    Hello,
+  Title,
 } from './styles/card';
 
 export const FeatureContext = createContext();
 
-export default function Card({children, ...restProps}) {
+export default function Card({ children, ...restProps }) {
   const [showFeature, setShowFeature] = useState(false);
   const [itemFeature, setItemFeature] = useState({});
 
   return (
-      <FeatureContext.Provider value={{showFeature, setShowFeature, itemFeature, setItemFeature}}>
-        <Container {...restProps}>{children}</Container>
-      </FeatureContext.Provider>
-  )
+    <FeatureContext.Provider value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}>
+      <Container {...restProps}>{children}</Container>
+    </FeatureContext.Provider>
+  );
 }
 
-Card.Item = function CardItem({item, children, ...restProps}) {
-  const {setShowFeature, setItemFeature} = useContext(FeatureContext);
+Card.Item = function CardItem({ item, children, ...restProps }) {
+  const { setShowFeature, setItemFeature } = useContext(FeatureContext);
 
-  return (<Item onClick={()=>{
-    setItemFeature(item);
-    setShowFeature(true);
-  }}{...restProps}>{children}</Item>
-  )
+  return (
+    <Item
+      onClick={() => {
+        setItemFeature(item);
+        setShowFeature(true);
+      }}
+      {...restProps}
+    >
+      {children}
+    </Item>
+  );
 };
 
-Card.Feature = function CardFeature({children, category, ...restProps}){
-  const {showFeature, itemFeature, setShowFeature} = useContext(FeatureContext);
+Card.Feature = function CardFeature({ children, category, ...restProps }) {
+  const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext);
 
   return showFeature ? (
-      <Feature {...restProps} src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
-        <Content>
-          <FeatureTitle>{itemFeature.title}</FeatureTitle>
-          <FeatureText>{itemFeature.description}</FeatureText>
-          <FeatureClose onClick={()=>setShowFeature(false)}>
-            <img src="/images/icons/close.png" alt="Close"/>
-          </FeatureClose>
+    <Feature {...restProps} src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+      <Content>
+        <FeatureTitle>{itemFeature.title}</FeatureTitle>
+        <FeatureText>{itemFeature.description}</FeatureText>
+        <FeatureClose onClick={() => setShowFeature(false)}>
+          <img src="/images/icons/close.png" alt="Close" />
+        </FeatureClose>
 
-          <Group margin="30px 0" flexDirection="row" alignItems="center">
-            <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
-            <FeatureText fontWeight="bold">
-              {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
-            </FeatureText>
-          </Group>
-          {children}
-        </Content>
-      </Feature>
+        <Group margin="30px 0" flexDirection="row" alignItems="center">
+          <Maturity rating={itemFeature.maturity}>{itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}</Maturity>
+          <FeatureText fontWeight="bold">
+            {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+          </FeatureText>
+        </Group>
+        {children}
+      </Content>
+    </Feature>
   ) : null;
-}
-
-
-Card.Hello = function CardHello({children, toWhat, ...restProps}) {
-  return <Hello toWhat="World"{...restProps}>{children}{toWhat}</Hello>
 };
 
-
-
-
-
-
-
-
-
-Card.Group = function CardGroup({children, ...restProps}) {
-  return <Group {...restProps}>{children}</Group>
-}
-Card.Title = function CardTitle({children, ...restProps}) {
-  return <Title {...restProps}>{children}</Title>
+Card.Hello = function CardHello({ children, toWhat, ...restProps }) {
+  return (
+    <Hello toWhat="World" {...restProps}>
+      {children}
+      {toWhat}
+    </Hello>
+  );
 };
 
-Card.Image = function CardImage({children, ...restProps}) {
-  return <Image {...restProps}/>
+Card.Group = function CardGroup({ children, ...restProps }) {
+  return <Group {...restProps}>{children}</Group>;
+};
+Card.Title = function CardTitle({ children, ...restProps }) {
+  return <Title {...restProps}>{children}</Title>;
 };
 
-Card.Entities = function CardEntities({children, ...restProps}) {
-  return <Entities {...restProps}>{children}</Entities>
+Card.Image = function CardImage({ children, ...restProps }) {
+  return <Image {...restProps} />;
+};
+
+Card.Entities = function CardEntities({ children, ...restProps }) {
+  return <Entities {...restProps}>{children}</Entities>;
 };
 
 Card.Text = function CardText({ children, ...restProps }) {
@@ -103,4 +105,3 @@ Card.SubTitle = function CardSubTitle({ children, ...restProps }) {
 Card.Meta = function CardMeta({ children, ...restProps }) {
   return <Meta {...restProps}>{children}</Meta>;
 };
-
