@@ -2,7 +2,7 @@
 // then we re-render
 // this onclick causes this useEffect to rerender: onClick={()=>setCategory('series')}
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player } from '../components';
 import * as ROUTES from '../constants/routes';
@@ -32,12 +32,10 @@ export function BrowseContainer({ slides }) {
   }, [slides, category]);
 
   useEffect(() => {
-    console.log('slideRows', slideRows);
     const fuse = new Fuse(slideRows, {
       keys: ['data.description', 'data.title', 'data.genre'],
     });
     const results = fuse.search(searchTerm).map(({ item }) => item);
-    console.log('results', results);
 
     if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
       setSlideRows(results);
