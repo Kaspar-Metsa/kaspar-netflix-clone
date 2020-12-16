@@ -8,5 +8,8 @@ ReactJS(react router)
 Styled Components
 Firebase
 
-To run it:
-clone + npm/yarn install + npm/yarn start
+## To run it:
+git clone + npm/yarn install + npm/yarn start
+
+## To run tests:
+git clone + npm/yarn install + npm/yarn test
